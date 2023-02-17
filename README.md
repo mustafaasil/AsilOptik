@@ -2,6 +2,12 @@
 
 A sample N-layerd .NET Core Project with Clean Architecture and the generic repository pattern 
 
+## Packages Installed
+### ApplicationCore
+```
+Install-Package Ardalis.Specification -v 6.1.0
+```
+
 ## Useful Links
 ### Documentation
 
