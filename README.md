@@ -2,6 +2,19 @@
 
 A sample N-layerd .NET Core Project with Clean Architecture and the generic repository pattern 
 
+## Migrations
+
+### Infrastructure
+
+Firstly, set the project "web" as startup project
+secondly choose ýnfrastructure on package manager console
+
+```
+Add-Migration InitialCreate -context ShopContext -o Data/Migrations
+Update-Database -context ShopContext
+```
+
+
 ## Packages Installed
 
 ### Infrastructure
