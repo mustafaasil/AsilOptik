@@ -1,4 +1,4 @@
-﻿@inject IRepository<Product> productRepo
+﻿@model HomeViewModel
 
 
 @{
@@ -10,7 +10,7 @@
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 
-@foreach (var item in await productRepo.GetAllAsync())
+@foreach (var item in  Model.Products)
 {
    <p>
        <img src="~/img/products/@item.PictureUri" alt="Alternate Text" height="32" />
