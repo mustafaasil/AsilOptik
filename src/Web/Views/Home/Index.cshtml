@@ -5,15 +5,34 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<form class="d-flex align-items-center mb-3 border rounded p-2 mt-2 bg-light" method="get">
+    <label asp-for="CategoryId" class="me-2">Category</label>
+    <select asp-for="CategoryId" asp-items="Model.Categories" class="form-select me-3 w-auto">
+        <option value="">Choose..</option>
+    </select>
+    <label asp-for="BrandId" class="me-2">Brand</label>
+    <select asp-for="BrandId" asp-items="Model.Brands" class="form-select me-3 w-auto">
+        <option value="">Choose..</option>
+    </select>
+    <button class="btn btn-primary" >Submit</button>
+</form>
 
-@foreach (var item in  Model.Products)
-{
-   <p>
-       <img src="~/img/products/@item.PictureUri" alt="Alternate Text" height="32" />
-    @item.Name
-   </p>
-}
+<div class="row">
+    @foreach (var item in Model.Products)
+    {
+        <div class="col-lg-3 col-md-4 col-sm-6">
+           <div class="product shadow-lg p-3  mb-5" >
+               <img class="product-image w-100" src="~/img/products/@item.PictureUri" alt="Alternate Text" />
+               <div class="product-name mb-2">
+                   @item.Name
+               </div>
+               <div class="d-flex justify-content-between align-items-center">
+                   <div class="product-price fw-bold">@item.Price.ToString("c2")</div>
+                   <button class="product-add btn btn-outline-success">
+                       <i class="fa-solid fa-cart-plus"></i>
+                   </button>
+               </div>
+           </div>
+        </div>
+    }
+</div>
