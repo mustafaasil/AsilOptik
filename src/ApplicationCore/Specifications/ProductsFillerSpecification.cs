@@ -22,5 +22,10 @@ namespace ApplicationCore.Specifications
                 Query.Where(x => x.BrandId == brandId);
             }
         }
+
+        public ProductsFillerSpecification(int? categoryId, int? brandId, int skip, int take) : this (categoryId, brandId)
+        {
+            Query.Skip(skip).Take(take);
+        }
     }
 }
