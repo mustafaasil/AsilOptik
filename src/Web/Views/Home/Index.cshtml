@@ -28,7 +28,7 @@
                 </div>
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="product-price fw-bold">@item.Price.ToString("c2")</div>
-                    <button class="product-add btn btn-outline-success">
+                    <button data-add-to-basket="@item.Id" class="product-add btn  btn-outline-success">
                         <i class="fa-solid fa-cart-plus"></i>
                     </button>
                 </div>
@@ -104,3 +104,15 @@
 <div class="text-center">
     Showing @pi.RangeStars-@pi.RangeEnd of @pi.TotalItems Products
 </div>
+
+@section Scripts{
+    <script>
+        $("[data-add-to-basket]").click(function () {
+            let productId = $(this).data("add-to-basket");
+            let url = "@Url.Action("AddToBasket", "Basket")";
+            $.post(url, { productId }, function (data) {
+                $("[data-total-items]").text(data.totalItems);
+            })
+        });
+    </script>
+ }
