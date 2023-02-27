@@ -42,9 +42,14 @@ Install-Package Ardalis.Specification -v 6.1.0
 ```
 
 ## Useful Links
-### Documentation
 
+### Resources
+https://codepen.io/yigith/pen/PoOrWjX
+
+### Documentation
 https://learn.microsoft.com/en-us/dotnet/architecture/modern-web-apps-azure/ 
+
+https://learn.microsoft.com/en-us/aspnet/core/fundamentals/middleware/write?view=aspnetcore-6.0
 
 ### GitHub
 
