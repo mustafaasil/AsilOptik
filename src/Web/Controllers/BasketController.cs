@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Web.Interfaces;
+using Web.Models;
 
 namespace Web.Controllers
 {
@@ -24,6 +26,40 @@ namespace Web.Controllers
         {
             var vm = await _basketViewModelService.GetBasketViewModelAsync();
             return View(vm);
+        }
+
+        [Authorize]
+        public async Task<IActionResult> Checkout()
+        {
+            var vm = new CheckoutViewModel()
+            {
+                Basket = await _basketViewModelService.GetBasketViewModelAsync()
+            };
+            return View(vm);
+        }
+
+        [Authorize, HttpPost, ValidateAntiForgeryToken]
+        public async Task<IActionResult> Checkout(CheckoutViewModel vm)
+        {
+
+            if (ModelState.IsValid)
+            {
+                // kredi kardtından parayı çek ve siparişi oluştur
+
+                await _basketViewModelService.CheckoutAsync(vm.Street, vm.City, vm.State, vm.Country, vm.ZipCode);
+
+                return RedirectToAction("OrderConfirmed");
+            }
+
+            vm.Basket = await _basketViewModelService.GetBasketViewModelAsync();
+           
+            return View(vm);
+        }
+
+        [Authorize]
+        public async Task<IActionResult> OrderConfirmed()
+        {
+            return View();
         }
 
         [HttpPost,ValidateAntiForgeryToken]

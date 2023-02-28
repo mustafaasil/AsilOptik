@@ -46,6 +46,8 @@ Install-Package Ardalis.Specification -v 6.1.0
 ### Resources
 https://codepen.io/yigith/pen/PoOrWjX
 
+https://getbootstrap.com/docs/5.2/examples/checkout/
+
 ### Documentation
 https://learn.microsoft.com/en-us/dotnet/architecture/modern-web-apps-azure/ 
 
