@@ -41,6 +41,11 @@ Install-Package Ardalis.Specification.EntityFrameworkCore -v 6.1.0
 Install-Package Ardalis.Specification -v 6.1.0
 ```
 
+### UnirTest
+```
+Install-Package Moq
+```
+
 ## Useful Links
 
 ### Resources
